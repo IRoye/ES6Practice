@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 是一种异步编程的解决方法
+        // 内部封装了多个状态
+       // Genertor是一种异步编程的解决方法
+       function * helloWorld(){
+           yield 'hello'
+           yield 'world'
+           return 'ending'
+       }
+     let hw = helloWorld()
+
+     console.log(hw.next()) // value, done: false
+     console.log(hw.next()) 
+     console.log(hw.next())
+
+
+     function * gen(){
+         // 只能在yield里面执行
+         yield 123 + 456
+     }
+     
+     function * f(){
+         console.log('执行！')
+     }
+
+     let generator = f()
+
+     setTimeout(function(){
+         generator.next()
+     }, 2000)
+
+     // ... 扩展运算符
+
+    </script>
+</body>
+</html>

@@ -32,23 +32,38 @@
 </head>
 <body>
   <script>
-  let array = [
-    {
-      id: 1, name: 'a',
-    },{
-      id: 2, name: 'b'
-    },{
-      id: 3, name: 'c'
-    }
-  ]
-  let user = ['a', 'c'];
-   // 几个宽度和高度
-  let test = document.getElementById('test');
+  // let array = [
+  //   {
+  //     id: 1, name: 'a',
+  //   },{
+  //     id: 2, name: 'b'
+  //   },{
+  //     id: 3, name: 'c'
+  //   }
+  // ]
+  // let user = ['a', 'c'];
+  //  // 几个宽度和高度
+  // let test = document.getElementById('test');
 
-  console.log('offsetWidth', test.offsetWidth)
+  // console.log('offsetWidth', test.offsetWidth)
 
-  console.log('innerWidth', test)
+  // console.log('innerWidth', test)
 
+  computed(10, 100);
+
+  var computed = function(a, b){
+    console.log(a * b)
+  }
+
+  function computed(a, b){
+    console.log( a+ b)
+  }
+
+  function computed(a, b){
+    console.log( (a + b) * 2)
+  }
+
+  computed(2, 10)
 </script>
 </body>
 </htmll>

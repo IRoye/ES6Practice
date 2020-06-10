@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const data = [
+            { id: 1, name: "办公管理", pid: 0 },
+            { id: 2, name: "请假申请", pid: 1 },
+            { id: 3, name: "出差申请", pid: 1 },
+            { id: 4, name: "请假记录", pid: 2 },
+            { id: 5, name: "系统设置", pid: 0 },
+            { id: 6, name: "权限管理", pid: 5 },
+            { id: 7, name: "用户角色", pid: 6 },
+            { id: 8, name: "菜单设置", pid: 6 },
+        ];
+        function buildTree(array, pid) {
+            let tempArray = []
+            for (let i = 0; i < array.length; i++) {
+                let node = array[i]
+                if (node.pid === pid) {
+                    let obj = {}
+                    obj.id = node.id
+                    obj.name = node.name
+                    obj.pid = pid
+                    obj.children = buildTree(data, node.id)
+                    tempArray.push(obj)
+                }
+            }
+            return tempArray
+        }
+        const a = buildTree(data, 0)
+        console.log(a)
+    </script>
+</body>
+
+</html>

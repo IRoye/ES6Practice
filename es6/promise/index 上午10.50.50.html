@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    let promise = new Promise(function(resolve, reject) {
+        console.log('111')
+        // 此时开始向任务队列添加任务,异步任务
+        resolve(1)
+        console.log(222)
+    }).then(() => {
+        console.log('end')
+    }).catch(() => {
+
+    })
+    console.log(promise)
+    const a = {
+        name: 1
+    }
+    console.log(a)
+</script>
+</html>
