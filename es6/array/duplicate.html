@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const array = [
+            { ip: '192.168.1.1', name: '123' },
+            { ip: '192.168.1.2', name: '123' },
+            { ip: '192.168.1.1', name: '123' },
+            { ip: '192.168.1.15', name: '123' },
+            { ip: '192.168.1.1', name: '123' },
+            { ip: '192.168.1.6', name: '123' },
+            { ip: '192.168.1.7', name: '123' }
+        ]
+        const map = new Map()
+        let test = array.filter(item => {
+            console.log(map.get(item.ip))
+            if (!map.get(item.ip)) {
+                map.set(item.ip, item)
+                return true
+            } else {
+                return false
+            }
+        })
+        console.log(test)
+    </script>
+</body>
+
+</html>
