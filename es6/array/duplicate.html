@@ -20,13 +20,14 @@
         ]
         const map = new Map()
         let test = array.filter(item => {
-            console.log(map.get(item.ip))
-            if (!map.get(item.ip)) {
-                map.set(item.ip, item)
-                return true
-            } else {
-                return false
-            }
+            // console.log(map.get(item.ip))
+            // if (!map.get(item.ip)) {
+            //     map.set(item.ip, item)
+            //     return true
+            // } else {
+            //     return false
+            // }
+            return !map.get(item.ip) && map.set(item.ip, item)
         })
         console.log(test)
     </script>

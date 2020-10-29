@@ -1,3 +1,10 @@
+<!--
+ * @Descripttion: 
+ * @Author: yuyi
+ * @Date: 2019-06-02 13:48:46
+ * @LastEditors: yuyi
+ * @LastEditTime: 2020-10-30 01:05:41
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,37 +43,39 @@
                     hidden: false
                 }
             ]
-        }
-        ];
-        let result = f(data)
-        console.log(result)
-        function f(data) {
-            return data.filter((element) => {
-                if (!element.hidden) {
-                    return false
-                } else if (element.hidden) {
-                    if (element.children && element.children.length > 0) {
-                        element.children = f(element.children)
-                    }
-                    return true
-                }
-            })
-        };
-        // let convert = data[1];
-        // convert.children = [];
-
-        // function configmanagerFilter(routes) {
-        //     return routes.filter((route) => {
-        //         if (!route.id) {
+        }];
+        // let result = f(data)
+        // console.log(result)
+        // function f(data) {
+        //     return data.filter((element) => {
+        //         if (!element.hidden) {
         //             return false
-        //         } else if (route.id) {
-        //             if (route.children && route.children.length > 0) {
-        //                 route.children = configmanagerFilter(route.children)
+        //         } else if (element.hidden) {
+        //             if (element.children && element.children.length > 0) {
+        //                 element.children = f(element.children)
         //             }
         //             return true
         //         }
         //     })
-        // }
+        // };
+        // 递归过滤
+        function filter2(data, empty = []) {
+            if (data && data.length !== 0) {
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i].hidden === false) {
+                        if (data[i].children) {
+                            data[i].children = filter2(data[i].children, [])
+                            empty.push(data[i])
+                        } else {
+                            empty.push(data[i])
+                        }
+                    }
+                }
+            }
+            return empty
+        }
+        const result = filter2(data, [])
+        console.log(result)
     </script>
 </body>
 
