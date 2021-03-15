@@ -1,0 +1,43 @@
+<!--
+ * @Descripttion: 对象数组，根据多个属性去重
+ * @Author: yuyi
+ * @Date: 2021-03-15 19:36:15
+ * @LastEditors: yuyi
+ * @LastEditTime: 2021-03-15 20:20:47
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function unique(list, ...rest) {
+            if (Object.prototype.toString.call(list).indexOf('Array') < 0 || list.length === 0) return []
+            const result = {}
+            for (let i = 0; i < list.length; i++) {
+                const keys = rest.map((value, key, arr) => {
+                    return list[i][value]
+                }).join('|')
+                result[keys] = list[i]
+            }
+            return Object.values(result)
+        }
+        let array = [
+            { key: 1, name: 2 },
+            { key: 1, name: 2 },
+            { key: 2, name: 3 },
+            { key: 3, name: 4 }
+        ]
+        const obj = unique(array, 'key', 'name')
+        console.log(obj)
+    </script>
+</body>
+
+</html>
