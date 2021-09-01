@@ -1,0 +1,53 @@
+<!--
+ * @Descripttion: 
+ * @Author: yuyi
+ * @Date: 2021-09-01 00:04:48
+ * @LastEditors: yuyi
+ * @LastEditTime: 2021-09-01 00:18:25
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const cache = {}
+
+        const mult = function() {
+            const args = Array.prototype.join(arguments, ', ')
+            if (cache[args]) {
+                return cache[args]
+            }
+            let a = 1;
+            for (let i = 0; i < arguments.length; i++) {
+                 a = arguments[i] * a
+            }
+            return cache[args] = a
+        }
+
+        console.log(mult(1,2,3))
+
+        // 立即执行函数
+        const f = (() => {
+          const cache = {}
+          return function() {
+              const args = Array.prototype.join(arguments, ', ')
+              if (args in cache) {
+                  return cache[args]
+              }
+              let a = 1
+              for (let i = 0; i < arguments.length; i++) {
+                a = a * arguments[i]
+              }
+              return cache[args] = a
+          }
+        })()
+
+        f()
+    </script>
+</body>
+</html>
