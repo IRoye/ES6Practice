@@ -1,0 +1,49 @@
+<!--
+ * @Descripttion: 
+ * @Author: yuyi
+ * @Date: 2021-11-13 23:10:15
+ * @LastEditors: yuyi
+ * @LastEditTime: 2021-11-14 15:17:26
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container"><div class="inner">42342384293842984298423948</div></div>
+    <script>
+        const cellChild = document.querySelector('.container')
+        const range = document.createRange()
+        range.setStart(cellChild, 0)
+        range.setEnd(cellChild, cellChild.childNodes.length)
+        console.log(cellChild.childNodes.length)
+        console.log(cellChild.childNodes)
+        console.log(range)
+        const rangeWidth = range.getBoundingClientRect().width
+        console.log('rangeWidth', rangeWidth) // rangeWidth 1904
+    </script>
+</body>
+<style>
+    html, body {
+        padding: 0;
+        margin: 0;
+    }
+    .container {
+        /* border: 1px solid black; */
+        height: 300px;
+        /* width: 50px; */
+    }
+    .inner {
+        word-break: break-all;
+        width: 100px;
+    }
+</style>
+
+</html>

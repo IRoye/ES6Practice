@@ -1,0 +1,40 @@
+<!--
+ * @Descripttion: defer和async
+
+    两者都会并行下载，不会影响页面的解析。
+    defer 会按照顺序在 DOMContentLoaded 前按照页面出现顺序依次执行。
+    async 则是下载完立即执行。
+
+ * @Author: yuyi
+ * @Date: 2021-10-15 12:16:14
+ * @LastEditors: yuyi
+ * @LastEditTime: 2021-10-15 12:44:39
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 不会阻塞页面的执行，加载完成就执行，DOMContentLoaded 可能在 async 之前或之后触发，不能保证谁先谁后-->
+    <script async type="module">
+        console.log(234)
+    </script>
+    <!-- 下载不会阻塞页面，会等到DOM解析完毕的时候，在DOMContentLoaded事件之前执行 -->
+    <script defer type="module">
+        console.log(123)
+    </script>
+</head>
+
+<body>
+    123
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOMContentLoaded')
+        })
+    </script>
+</body>
+
+</html>
